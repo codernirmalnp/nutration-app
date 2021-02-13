@@ -310,7 +310,6 @@ async function connect() {
     console.log('Mongoose error', err);
   }
   app.listen(16199);
-  console.log(process.env)
   console.log(`API listening on localhost:${process.env.PORT}`);
 }
 
