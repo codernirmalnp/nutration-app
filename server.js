@@ -289,7 +289,7 @@ app.get('/api/users', requireAuth, async (req, res) => {
 });
 
 
-console.log(process.env.NODE_ENV)
+
 
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
@@ -311,7 +311,7 @@ async function connect() {
   } catch (err) {
     console.log('Mongoose error', err);
   }
-  app.listen(8000);
+  app.listen();
   console.log('API listening on localhost:3001');
 }
 
