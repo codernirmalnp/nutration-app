@@ -311,8 +311,8 @@ async function connect() {
   } catch (err) {
     console.log('Mongoose error', err);
   }
-  app.listen(process.env.PORT);
-  console.log(`API listening on localhost:${process.env.PORT}`);
+  app.listen(process.env.PORT || 3000);
+  console.log(`API listening on localhost:${process.env.PORT} `);
 }
 
 connect();
