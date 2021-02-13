@@ -271,12 +271,7 @@ app.delete(
     }
   }
 );
-// Serve any static files
-  app.use(express.static(path.join(__dirname, 'client/build')));
-// Handle React routing, return all requests to React app
-  app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-  });
+
 
 app.get('/api/users', requireAuth, async (req, res) => {
   try {
@@ -292,6 +287,12 @@ app.get('/api/users', requireAuth, async (req, res) => {
       message: 'There was a problem getting the users'
     });
   }
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, 'client/build')));
+// Handle React routing, return all requests to React app
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
 });
 
  
