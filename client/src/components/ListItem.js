@@ -25,7 +25,7 @@ export const ListItem=({item,getId})=>{
       <td className="px-16 py-2 flex flex-row items-center">
         <img
           className="h-20 w-20 rounded-full object-cover "
-          src={`https://nutrationapp.herokuapp.com//uploads/${item.image}`}
+          src={`https://nutrationapp.herokuapp.com/uploads/${item.image}`}
           alt=""
         />
       </td>
