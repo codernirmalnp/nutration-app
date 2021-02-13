@@ -60,6 +60,6 @@
     "tailwindcss": "^1.4.6"
   },
  
-  "proxy": "http://localhost:1602/"
+  "proxy": "http://localhost:9182/"
 }
   
