@@ -23,10 +23,8 @@ const {
 } = require('./util');
 
 const app = express();
-const corsOptions = {
-  origin: '*'
-}
-app.use(cors(corsOptions));
+
+app.use(cors());
 app.use(express.urlencoded({extended:false})); 
 app.use(express.json());
 app.use(cookieParser())
@@ -178,10 +176,11 @@ const attachUser = (req, res, next) => {
 
 app.use(attachUser);
 
+
 const requireAuth = jwt({
   secret: process.env.JWT_SECRET,
-  audience: 'api.orbit',
-  issuer: 'api.orbit',
+  audience: 'food-api',
+  issuer: 'food-api',
   getToken:req=>req.cookies.token
  
 });
@@ -312,6 +311,7 @@ async function connect() {
     console.log('Mongoose error', err);
   }
   app.listen(process.env.PORT || 5000);
+  console.log(process.env)
   console.log('API listening on localhost:process.env.PORT');
 }
 
