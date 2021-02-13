@@ -312,7 +312,7 @@ async function connect() {
   }
   app.listen(process.env.PORT || 5000);
   console.log(process.env)
-  console.log('API listening on localhost:process.env.PORT');
+  console.log(`API listening on localhost:${process.env.PORT}`);
 }
 
 connect();
