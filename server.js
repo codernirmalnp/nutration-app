@@ -91,12 +91,7 @@ app.post('/api/authenticate',async (req, res) => {
       .json({ message: 'Something went wrong.' });
   }
 });
- // Serve any static files
-  app.use(express.static(path.join(__dirname, 'client/build')));
-// Handle React routing, return all requests to React app
-  app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-  });
+
 app.get(
   '/api/item',
  async (req, res) => {
@@ -293,8 +288,12 @@ app.get('/api/users', requireAuth, async (req, res) => {
   }
 });
 
-
-
+ // Serve any static files
+  app.use(express.static(path.join(__dirname, 'client/build')));
+// Handle React routing, return all requests to React app
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
 
  
 
