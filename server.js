@@ -151,6 +151,12 @@ app.get(
   
 );
 
+// Serve any static files
+  app.use(express.static(path.join(__dirname, 'client/build')));
+// Handle React routing, return all requests to React app
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
 
 const attachUser = (req, res, next) => {
   const token = req.cookies.token;
@@ -170,13 +176,13 @@ const attachUser = (req, res, next) => {
     next();
   }
 };
-
+ 
 app.use(attachUser);
 
 const requireAuth = jwt({
   secret: process.env.JWT_SECRET,
-  audience: 'api.orbit',
-  issuer: 'api.orbit',
+  audience: 'api.food',
+  issuer: 'api.food',
   getToken:req=>req.cookies.token
  
 });
@@ -272,12 +278,7 @@ app.delete(
     }
   }
 );
- // Serve any static files
-  app.use(express.static(path.join(__dirname, 'client/build')));
-// Handle React routing, return all requests to React app
-  app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-  });
+ 
 
 app.get('/api/users', requireAuth, async (req, res) => {
   try {
@@ -296,7 +297,7 @@ app.get('/api/users', requireAuth, async (req, res) => {
 });
 
 
- 
+
 
 
 async function connect() {
